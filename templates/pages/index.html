@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- HOME SECTION -->
+<header id="home-section">
+    <div class="dark-overlay">
+        <div class="home-inner container">
+            <div class="row">
+                <!-- Alerts -->
+                {% include 'partials/alerts.html' %}
+                <div class="col-lg-8 d-none d-lg-block">
+                    <h1 class="display-4">Check your <strong> Result</strong> and <strong> Save Your Time</strong>
+                    </h1>
+                    <div class="d-flex">
+                        <div class="p-4 align-self-start">
+                            <i class="fas fa-check fa-2x"></i>
+                        </div>
+                        <div class="p-4 align-self end">
+                            <h5>Register Your Account</h5>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="p-4 align-self-start">
+                            <i class="fas fa-check fa-2x"></i>
+                        </div>
+                        <div class="p-4 align-self end">
+                            <h5>Fill out form, submit details and Get Your Result</h5>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="p-4 align-self-start">
+                            <i class="fas fa-check fa-2x"></i>
+                        </div>
+                        <div class="p-4 align-self end">
+                            <h5>Check Our Services for more And catch the updates from Latest offers</h5>
+                        </div>
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                {% else %}
+                <div class="card bg-primary text-center card-form">
+
+                    <div class="card-body">
+                        <h3>Sign Up Today</h3>
+                        <p>Please fill out the form to register</p>
+                        <form action="{% url 'index' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" name="username" class="form-control form-control-lg"
+                                    placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control form-control-lg"
+                                    placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control form-control-lg"
+                                    placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password2" class="form-control form-control-lg"
+                                    placeholder="Confirm Password">
+                            </div>
+                            <input type="submit" value="Submit" class="btn btn-success btn-block mr-2">
+                        </form>
+                        <div class="text-white mt-3">
+                            Already Have an Account?
+                            <a href="{% url 'login' %}" class="display-5 px-2 text-white"> Login</a>
+                        </div>
+                    </div>
+                </div>
+
+                {% endif %}
+
+                <div class="col-lg-4">
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</header>
+
+{% endblock %}

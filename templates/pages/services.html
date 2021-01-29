@@ -1,0 +1,291 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- PAGE HEADER -->
+<header id="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 m-auto text-center">
+                <h1>Our Services</h1>
+                <p>Fill Out the details in given form and get what you want.</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="py-3">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card p-4">
+                    <div class="card-body">
+                        <h3 class="text-center">Please fill out this form</h3>
+                        <div class="card" style="width: 22rem;">
+                            <div class="card-body">
+                                {% if eligibility %}
+
+                                {% if status == 1 %}
+
+                                <h5 class="card-title text-success font-weight-bold">You're eligible for getting loan
+                                </h5>
+                                {%elif status == 0 %}
+
+                                <h5 class="card-title text-danger font-weight-bold">You're not eligible for getting loan
+                                </h5>
+                                {%endif%}
+                                {%else%}
+                                <h5 class="card-title font-weight-bold text-info">See Your Status here</h5>
+                                {%endif%}
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <hr>
+                        <form action="{%url 'predict'%}" method="post">
+                            {%csrf_token%}
+
+                            <div class="row m-2">
+                                <div class="col-md-8">
+                                    <h6>Name</h6>
+                                    <input type="text" class="form-control mb-3" name="name"
+                                        placeholder="Enter Your Full Name">
+                                </div>
+
+                            </div>
+                            <div class="row m-2">
+                                <div class="col-md-3">
+                                    <h6>Gender</h6>
+                                    <select name="gender" class="form-control mb-3">
+                                        <option value="1">Male</option>
+                                        <option value="0">Female</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <h6>Married</h6>
+                                    <select name="married" class="form-control mb-3">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <h6>Dependents</h6>
+                                    <input type="number" class="form-control mb-3" name="dependents"
+                                        placeholder="Number of dependents">
+                                </div>
+                            </div>
+                            <div class="row m-2">
+                                <div class="col-md-3">
+                                    <h6>Education</h6>
+                                    <select name="education" class="form-control mb-3">
+                                        <option value="1">Graduate</option>
+                                        <option value="0">Under Graduate</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <h6>Self_Employed</h6>
+                                    <select name="self_employed" class="form-control mb-3">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <h6>ApplicantIncome</h6>
+                                    <input type="number" class="form-control mb-3" name="applicantIncome"
+                                        placeholder="Applicant income">
+                                </div>
+                                <div class="col-md-3">
+                                    <h6>CoapplicantIncome</h6>
+                                    <input type="number" class="form-control mb-3" name="coapplicantIncome"
+                                        placeholder="Coapplicant income">
+                                </div>
+                            </div>
+                            <div class="row m-2">
+                                <div class="col-md-6">
+                                    <h6>Loan Amount</h6>
+                                    <input type="number" class="form-control mb-3" name="loanamount"
+                                        placeholder="Loan amount in thousands">
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Loan Amount Term (in days)</h6>
+                                    <input type="number" class="form-control mb-3" name="loan_amount_term"
+                                        placeholder="Term of loan in months">
+                                </div>
+                            </div>
+                            <div class="row m-2">
+                                <div class="col-md-6">
+                                    <h6>Credit History</h6>
+                                    <select name="credit_history" class="form-control mb-3">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Property Area</h6>
+                                    <select name="propertyarea" class="form-control mb-3">
+                                        <option value="1">Urban</option>
+                                        <option value="2">Semi Urban</option>
+                                        <option value="3">Rural</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row m-2">
+
+                                <!-- <div class="col-md-4">
+                                    <button type="cancel" class="btn btn-secondary btn-block">Cancel</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="reset" class="btn btn-danger btn-block">Reset</button>
+                                </div> -->
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-success btn-block">Submit</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="p-5 bg-dark text-white">
+    <div class="container">
+        <h1 class="text-center">Frequently Asked Questions</h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <a href="#collapseOne" data-toggle="collapse" data-parent="#accordion">
+                                    Question One
+                                </a>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show">
+                            <div class="card-body bg-secondary">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt ea officiis
+                                distinctio exercitationem dolor minus placeat
+                                amet commodi, ab a perspiciatis officia nobis reiciendis numquam totam repudiandae
+                                molestias nulla, quod
+                                voluptatibus modi rerum laboriosam tenetur. Nihil, soluta eaque? Minima, deserunt.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <a href="#collapseTwo" data-toggle="collapse" data-parent="#accordion">
+                                    Question Two
+                                </a>
+                            </h5>
+                        </div>
+
+                        <div id="collapseTwo" class="collapse">
+                            <div class="card-body bg-secondary">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt ea officiis
+                                distinctio exercitationem dolor minus placeat
+                                amet commodi, ab a perspiciatis officia nobis reiciendis numquam totam repudiandae
+                                molestias nulla, quod
+                                voluptatibus modi rerum laboriosam tenetur. Nihil, soluta eaque? Minima, deserunt.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <a href="#collapseThree" data-toggle="collapse" data-parent="#accordion">
+                                    Question Three
+                                </a>
+                            </h5>
+                        </div>
+
+                        <div id="collapseThree" class="collapse">
+                            <div class="card-body bg-secondary">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt ea officiis
+                                distinctio exercitationem dolor minus placeat
+                                amet commodi, ab a perspiciatis officia nobis reiciendis numquam totam repudiandae
+                                molestias nulla, quod
+                                voluptatibus modi rerum laboriosam tenetur. Nihil, soluta eaque? Minima, deserunt.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <a href="#collapseFour" data-toggle="collapse" data-parent="#accordion">
+                                    Question Four
+                                </a>
+                            </h5>
+                        </div>
+
+                        <div id="collapseFour" class="collapse">
+                            <div class="card-body bg-secondary">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt ea officiis
+                                distinctio exercitationem dolor minus placeat
+                                amet commodi, ab a perspiciatis officia nobis reiciendis numquam totam repudiandae
+                                molestias nulla, quod
+                                voluptatibus modi rerum laboriosam tenetur. Nihil, soluta eaque? Minima, deserunt.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <a href="#collapseFive" data-toggle="collapse" data-parent="#accordion">
+                                    Question Five
+                                </a>
+                            </h5>
+                        </div>
+
+                        <div id="collapseFive" class="collapse">
+                            <div class="card-body bg-secondary">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt ea officiis
+                                distinctio exercitationem dolor minus placeat
+                                amet commodi, ab a perspiciatis officia nobis reiciendis numquam totam repudiandae
+                                molestias nulla, quod
+                                voluptatibus modi rerum laboriosam tenetur. Nihil, soluta eaque? Minima, deserunt.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <a href="#collapseSix" data-toggle="collapse" data-parent="#accordion">
+                                    Question Six
+                                </a>
+                            </h5>
+                        </div>
+
+                        <div id="collapseSix" class="collapse">
+                            <div class="card-body bg-secondary">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt ea officiis
+                                distinctio exercitationem dolor minus placeat
+                                amet commodi, ab a perspiciatis officia nobis reiciendis numquam totam repudiandae
+                                molestias nulla, quod
+                                voluptatibus modi rerum laboriosam tenetur. Nihil, soluta eaque? Minima, deserunt.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

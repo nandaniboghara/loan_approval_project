@@ -1,0 +1,87 @@
+body #home-section {
+    
+    color: #fff;
+}
+
+.navbar {
+    border-bottom: #008ed6 3px solid;
+    opacity: 0.8;
+}
+
+#home-section {
+    background: url(../img/home.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 700px;
+}
+
+#home-section .dark-overlay {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    min-height: 700px;
+    background: rgba(0,0,0,0.7);
+}
+
+.dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+#page-header {
+    height: 250px;
+    background: url('../img/home2.jpg');
+    background-position: 0;
+    background-attachment: fixed;
+    color:#fff;
+    border-bottom: 1px #eee solid;
+    padding-top: 80px;
+    
+}
+
+#home-section .home-inner {
+    padding-top: 150px;
+
+}
+#home-section .fas {
+    color: #008ed6;
+    background: #fff;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+
+#main-footer {
+    background: #000;
+    color: #fff;
+}
+
+.pimg {
+    width: 180px;
+    height: 180px;
+}
+
+#faq .card {
+    border: #444;
+}
+
+#faq a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#faq .card-body,
+#faq .card-header {
+    background: #333;
+}
+
+.checked {
+    color: white;
+  }
+
